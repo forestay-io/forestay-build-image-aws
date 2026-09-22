@@ -59,10 +59,11 @@ RUN go install "sigs.k8s.io/controller-runtime/tools/setup-envtest@${SETUP_ENVTE
 # Install AWS CLI v2, securely
 RUN install-aws-cli.bash
 
-# Install envtest control planes, one per supported Kubernetes version. The
-# minimum is set by the required CEL version the CRDs use. See the
-# Compatibility.md doc in the main forestay repo.
-ENV ENVTEST_VERSIONS="1.29.5 1.30.3 1.31.0 1.32.0 1.33.0 1.34.1 1.35.0 1.36.2 1.37.0"
+# Install envtest control planes for the floor and ceiling of the supported
+# range. CEL features only get added, so a rule too new fails at the floor and
+# one since removed fails at the ceiling. See the Compatibility.md doc in the
+# main forestay repo.
+ENV ENVTEST_VERSIONS="1.29.5 1.37.0"
 ENV ENVTEST_ROOT=/opt/envtest
 RUN install-envtest.bash
 
