@@ -31,7 +31,7 @@ for version in ${ENVTEST_VERSIONS}; do
   fi
 
   mkdir -p "${ENVTEST_ROOT}/${version}"
-  tar xzf "/tmp/${name}" -C "${ENVTEST_ROOT}/${version}" --strip-components=2
+  tar xzf "/tmp/${name}" -C "${ENVTEST_ROOT}/${version}" --strip-components=2 --exclude='*/kubectl'
   rm -f "/tmp/${name}" "/tmp/${name}.sha512"
 
   test -x "${ENVTEST_ROOT}/${version}/kube-apiserver"
