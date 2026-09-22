@@ -25,7 +25,5 @@ DEPS_ROOT="${DEPS_ROOT:-/opt/deps}"
 echo "Downloading modules"
 (cd "${DEPS_ROOT}" && go mod download)
 
-for arch in amd64 arm64; do
-  echo "Compiling stdlib for linux/${arch}"
-  CGO_ENABLED=0 GOOS=linux GOARCH="${arch}" go build -trimpath std
-done
+echo "Compiling stdlib for linux/${DOCKER_PLATFORM_CPU_ARCHITECTURE}"
+CGO_ENABLED=0 GOOS=linux GOARCH="${DOCKER_PLATFORM_CPU_ARCHITECTURE}" go build -trimpath std
