@@ -23,7 +23,7 @@ DEPS_ROOT="${DEPS_ROOT:-/opt/deps}"
 
 # Subshell so the stdlib compile below does not inherit the module directory
 echo "Downloading modules"
-(cd "${DEPS_ROOT}" && go mod download all)
+(cd "${DEPS_ROOT}" && go mod download)
 
 for arch in amd64 arm64; do
   echo "Compiling stdlib for linux/${arch}"
