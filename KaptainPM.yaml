@@ -1,4 +1,4 @@
-apiVersion: kaptain.org/1.31
+apiVersion: kaptain.org/1.38
 kind: docker-build-dockerfile
 metadata:
   description: "Build and test toolchain image for the Forestay AWS variant"
